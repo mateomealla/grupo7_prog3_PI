@@ -1,0 +1,105 @@
+footer {
+  background: #0d0d0d;        
+  color: #cfcfcf;             
+  padding: 56px 48px 28px;
+  border-top: 1px solid #131313;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+footer * {
+  box-sizing: border-box;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;  
+  gap: 48px;
+  align-items: start;
+}
+
+
+.footer-logo {
+  width: 140px;
+  height: auto;
+  display: block;
+  filter: none;
+  margin: 0 auto 18px; 
+}
+
+.footer-content > p,
+.footer-content .brand-text {
+  margin: 6px 0;
+  color: #b8b8b8;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* --- Cada columna generada por Footerarticle --- */
+.footer-article {
+  text-align: center;              
+  padding: 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.footer-article:hover {
+  background: #141414;             
+  transform: translateY(-4px);     
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+.footer-article h3 {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 14px;
+  letter-spacing: 0.2px;
+}
+
+/* --- Imagen  --- */
+.footer-article img {
+  width: 100%;
+
+  object-fit: cover;
+  border-radius: 6px;             
+  display: block;
+  margin: 0 auto 12px;            
+  border: 1px solid #1e1e1e;
+  background: #111;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.footer-article:hover img {
+  transform: scale(1.05);          
+}
+
+/* --- Links / ítems --- */
+.footer-article .item,
+.footer-article .link-like {
+  display: block;
+  color: #cfcfcf;
+  text-decoration: none;
+  margin: 6px 0;
+  font-size: 0.98rem;
+  transition: color .25s ease;
+}
+
+.footer-article .item:hover,
+.footer-article .link-like:hover {
+  color: #ff2a2a;  
+}
+
+/* --- Línea y copyright --- */
+footer > p {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  padding-top: 22px;
+  color: #9a9a9a;
+  font-size: 0.92rem;
+  border-top: 1px solid #151515;
+  text-align: center;
+}

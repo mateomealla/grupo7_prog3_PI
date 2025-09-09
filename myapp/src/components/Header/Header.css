@@ -1,0 +1,49 @@
+header {
+  background-color: #000; /* negro */
+  padding: 10px 40px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.Logo img {
+  height: 35px;
+  cursor: pointer;
+}
+
+/* Navegación principal */
+.main-nav {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  position: relative;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #fff; /* blanco */
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* Hover rojo */
+.main-nav a:hover {
+  color: #ff0000;
+}
+
+/* Usuario (perfil a la derecha) */
+.user img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
