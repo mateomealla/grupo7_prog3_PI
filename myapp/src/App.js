@@ -22,7 +22,7 @@ function App() {
         <Route path="/favoritos" component={Favoritos}/>
         <Route path="/peliculasyseries/:id" component={PeliculasYSeries}/>
         <Route path="/resultados/:busqueda" component={Busqueda}/>
-        {/* <Route path="" component={NotFound}/> */}
+        <Route component={NotFound}/>
       </Switch>
 
       <Footer/>
