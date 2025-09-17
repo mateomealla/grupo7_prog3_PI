@@ -1,5 +1,5 @@
 import React from 'react';
-import Series from '../components/Series/Series.js';
+import Series from "../../components/Series/Series.js";
 
 function SeriesScreen() {
   return (

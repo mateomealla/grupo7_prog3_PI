@@ -6,12 +6,12 @@ import Header from "./components/Header/Header";
 
 import Home from "./screens/Home/Home"
 import Busqueda from "./screens/Busqueda/Busqueda"
-import Detalle from "./screens/Detalle/Detalle"
+// import Detalle from "./screens/Detalle/Detalle"
 import Favoritos from "./screens/Favoritos/Favoritos"
 import PelisScreen from "./screens/PelisScreen/PelisScreen"
 import SeriesScreen from "./screens/SeriesScreen/SeriesScreen"
 import NotFound from "./screens/NotFound/NotFound"
-import Loader from "./screens/Loader/Loader"
+// import Loader from "./screens/Loader/Loader"
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
       <Switch>
         <Route path="/home" exact={true} component={Home}/>
         <Route path="/favoritos" component={Favoritos}/>
-        <Route path="/pelis" component={PelisScreen}/>
+        <Route path="/peliculas" component={PelisScreen}/>
         <Route path="/series" component={SeriesScreen}/>
         <Route path="/resultados/:busqueda" component={Busqueda}/>
         <Route component={NotFound}/>
