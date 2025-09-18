@@ -46,7 +46,7 @@ class SeriesCard extends Component {
 
               <button className="btn-fav">Favorito</button>
             </div>
-            <Link to={`/peliculas/id/${this.props.id}`} className="btn-play">
+            <Link to={`/detalle/id/${this.state.dataProducto.id}`} className="btn-play">
               Detalle
             </Link>
           </div>

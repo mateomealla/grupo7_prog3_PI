@@ -29,7 +29,7 @@ class PelisCard extends Component {
               {this.state.textoBoton}
             </button>
           </div>
-          <Link to={`/peliculas/id/${this.props.id}`}>
+          <Link to={`/detalle/id/${this.props.id}`}>
             <p>Detalle</p>
           </Link>
           <button>Guardar</button>
