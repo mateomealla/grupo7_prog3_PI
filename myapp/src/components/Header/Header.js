@@ -27,7 +27,10 @@ function Header() {
           <li className="has-submenu">
             <span>Series ▾</span>
             <ul className="submenu">
-              
+              <li><Link to="/seriespopulares">Series Populares</Link></li>
+              <li><Link to="/seriestoprated">Series Preferidas</Link></li>
+              <li><Link to="/seriesontheair">Al Aire</Link></li>
+              <li><Link to="/seriesairing">Trasmitiendo Ahora</Link></li>
             </ul>
           </li>
         </ul>

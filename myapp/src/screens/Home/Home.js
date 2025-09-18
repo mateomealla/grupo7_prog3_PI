@@ -11,6 +11,11 @@ class Home extends Component {
       topRated: [],
       upcoming: [],
       nowPlaying: [],
+
+      spopulares: [],
+      sAiring: [],
+      stopRated: [],
+      sontheair: [],
     };
   }
 
@@ -63,6 +68,54 @@ class Home extends Component {
         })
       )
       .catch((error) => console.log("Error Fetch", error));
+
+      // SERIES POPULARES
+      fetch(
+      "https://api.themoviedb.org/3/tv/popular?api_key=8a83423231f73046d3a699212802bf6e&language=en-US&page=1"
+    )
+      .then((resp) => resp.json())
+      .then((spopulares) =>
+        this.setState({
+          spopulares: spopulares.results,
+        })
+      )
+      .catch((error) => console.log("Error Fetch", error));
+
+      // SERIES AIRING TODAY
+      fetch(
+      "https://api.themoviedb.org/3/tv/airing_today?api_key=8a83423231f73046d3a699212802bf6e&language=en-US&page=1"
+    )
+      .then((resp) => resp.json())
+      .then((sAiring) =>
+        this.setState({
+          sAiring: sAiring.results,
+        })
+      )
+      .catch((error) => console.log("Error Fetch", error));
+
+      // SERIES TOP RATED
+      fetch(
+      "https://api.themoviedb.org/3/tv/top_rated?api_key=8a83423231f73046d3a699212802bf6e&language=en-US&page=1"
+    )
+      .then((resp) => resp.json())
+      .then((stopRated) =>
+        this.setState({
+          stopRated: stopRated.results,
+        })
+      )
+      .catch((error) => console.log("Error Fetch", error));
+
+      // SERIES ON THE AIR
+      fetch(
+      "https://api.themoviedb.org/3/tv/on_the_air?api_key=8a83423231f73046d3a699212802bf6e&language=en-US&page=1"
+    )
+      .then((resp) => resp.json())
+      .then((sontheair) =>
+        this.setState({
+          sontheair: sontheair.results,
+        })
+      )
+      .catch((error) => console.log("Error Fetch", error));
   }
 
   render() {
@@ -77,8 +130,18 @@ class Home extends Component {
           </section>
 
           <section className="home-section">
+            <Link to = "/seriespopulares"> <h1>Series Populares</h1> </Link>
+            <SeccionSeries se={this.state.spopulares} />
+          </section>
+
+          <section className="home-section">
             <Link to = "/peliculasviendoahora"> <h1>Viendo Ahora</h1> </Link>
             <SeccionSeries peliculas={this.state.nowPlaying} />
+          </section>
+
+          <section className="home-section">
+            <Link to = "/seriesairing"> <h1>Trasmitiendo Ahora</h1> </Link>
+            <SeccionSeries se={this.state.sAiring} />
           </section>
 
           <section className="home-section">
@@ -87,11 +150,20 @@ class Home extends Component {
           </section>
 
           <section className="home-section">
+            <Link to = "/seriesontheair"> <h1>Al Aire</h1> </Link>
+            <SeccionSeries se={this.state.sontheair} />
+          </section>
+
+          <section className="home-section">
             <Link to = "/peliculasproximamente"> <h1>Próximamente</h1> </Link>
             <SeccionSeries peliculas={this.state.upcoming} />
           </section>
+
+          <section className="home-section">
+            <Link to = "/seriestoprated"> <h1>Series Preferidas</h1> </Link>
+            <SeccionSeries se={this.state.stopRated} />
+          </section>
         </main>
-        {console.log(this.state.topRated)}
       </React.Fragment>
     );
   }

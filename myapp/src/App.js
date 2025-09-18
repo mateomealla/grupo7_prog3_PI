@@ -16,6 +16,11 @@ import PelisMejorPt from "./screens/PelisScreen/Pelismejorpt"
 import PelisProx from "./screens/PelisScreen/PelisProximamente"
 
 import SeriesScreen from "./screens/SeriesScreen/SeriesScreen"
+import SeriesPopulares from "./screens/SeriesScreen/SeriesPopulares"
+import SeriesTopRated from "./screens/SeriesScreen/SeriesTopRated"
+import Seriesairing from "./screens/SeriesScreen/Seriesairing"
+import Seriesontheair from "./screens/SeriesScreen/Seriesontheair"
+
 import NotFound from "./screens/NotFound/NotFound"
 
 // import Loader from "./screens/Loader/Loader"
@@ -33,7 +38,10 @@ function App() {
         <Route path="/peliculasmejorpuntuacion" component={PelisMejorPt}/>
         <Route path="/peliculasproximamente" component={PelisProx}/>
 
-        <Route path="/seriespopulares" component={SeriesScreen}/>
+        <Route path="/seriespopulares" component={SeriesPopulares}/>
+        <Route path="/seriestoprated" component={SeriesTopRated}/>
+        <Route path="/seriesairing" component={Seriesairing}/>
+        <Route path="/seriesontheair" component={Seriesontheair}/>
 
         <Route path="/resultados/:busqueda" component={Busqueda}/>
         <Route path="/detalle/id/:id" component={DetalleScreen}/>
