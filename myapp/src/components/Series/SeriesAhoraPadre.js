@@ -37,7 +37,7 @@ class SeriesAhoraPadre extends Component {
 
   FiltrarPelis(peliAFiltrar) {
     return this.state.movies.filter((i) =>
-      i.title.toLowerCase().includes(peliAFiltrar.toLowerCase())
+      i.name.toLowerCase().includes(peliAFiltrar.toLowerCase())
     );
   }
 
