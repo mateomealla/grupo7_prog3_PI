@@ -126,42 +126,42 @@ class Home extends Component {
 
           <section className="home-section">
             <Link to = "/peliculaspopulares"> <h1>Peliculas Populares</h1> </Link>
-            <SeccionSeries peliculas={this.state.populares} />
+            <SeccionSeries peliculas={this.state.populares} movie={true} />
           </section>
 
           <section className="home-section">
             <Link to = "/seriespopulares"> <h1>Series Populares</h1> </Link>
-            <SeccionSeries se={this.state.spopulares} />
+            <SeccionSeries se={this.state.spopulares} movie={false} />
           </section>
 
           <section className="home-section">
             <Link to = "/peliculasviendoahora"> <h1>Viendo Ahora</h1> </Link>
-            <SeccionSeries peliculas={this.state.nowPlaying} />
+            <SeccionSeries peliculas={this.state.nowPlaying} movie={true} />
           </section>
 
           <section className="home-section">
             <Link to = "/seriesairing"> <h1>Trasmitiendo Ahora</h1> </Link>
-            <SeccionSeries se={this.state.sAiring} />
+            <SeccionSeries se={this.state.sAiring} movie={false} />
           </section>
 
           <section className="home-section">
             <Link to = "/peliculasmejorpuntuacion"> <h1>Mejor Puntuación</h1> </Link>
-            <SeccionSeries peliculas={this.state.topRated} />
+            <SeccionSeries peliculas={this.state.topRated} movie={true} />
           </section>
 
           <section className="home-section">
             <Link to = "/seriesontheair"> <h1>Al Aire</h1> </Link>
-            <SeccionSeries se={this.state.sontheair} />
+            <SeccionSeries se={this.state.sontheair} movie={false} />
           </section>
 
           <section className="home-section">
             <Link to = "/peliculasproximamente"> <h1>Próximamente</h1> </Link>
-            <SeccionSeries peliculas={this.state.upcoming} />
+            <SeccionSeries peliculas={this.state.upcoming} movie={true} />
           </section>
 
           <section className="home-section">
             <Link to = "/seriestoprated"> <h1>Series Preferidas</h1> </Link>
-            <SeccionSeries se={this.state.stopRated} />
+            <SeccionSeries se={this.state.stopRated} movie={false} />
           </section>
         </main>
       </React.Fragment>
