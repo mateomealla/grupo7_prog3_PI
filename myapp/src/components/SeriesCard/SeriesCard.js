@@ -7,7 +7,6 @@ class SeriesCard extends Component {
     this.state = {
       verMas: false,
       textoBoton: "Ver descripcion",
-      // dataProducto: props.data,
     };
   }
 

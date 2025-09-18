@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MiFormulario from "../../components/Formularios/FormularioHome";
 import SeccionSeries from "../../components/SeriesCard/SeccionSeries";
+import { Link} from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Home extends Component {
   componentDidMount() {
     // PELICULAS POPULARES
     fetch(
-      "https://api.themoviedb.org/3/tv/popular?api_key=8a83423231f73046d3a699212802bf6e&language=en-US&page=1"
+      "https://api.themoviedb.org/3/movie/popular?api_key=8a83423231f73046d3a699212802bf6e&language=en-US&page=1"
     )
       .then((resp) => resp.json())
       .then((populares) =>
@@ -71,22 +72,22 @@ class Home extends Component {
           <MiFormulario />
 
           <section className="home-section">
-            <h1>Now Playing</h1>
-            <SeccionSeries peliculas={this.state.nowPlaying} />
-          </section>
-
-          <section className="home-section">
-            <h1>Popular</h1>
+            <Link to = "/peliculaspopulares"> <h1>Peliculas Populares</h1> </Link>
             <SeccionSeries peliculas={this.state.populares} />
           </section>
 
           <section className="home-section">
-            <h1>Top Rated</h1>
+            <Link to = "/peliculasviendoahora"> <h1>Viendo Ahora</h1> </Link>
+            <SeccionSeries peliculas={this.state.nowPlaying} />
+          </section>
+
+          <section className="home-section">
+            <Link to = "/peliculasmejorpuntuacion"> <h1>Mejor Puntuación</h1> </Link>
             <SeccionSeries peliculas={this.state.topRated} />
           </section>
 
           <section className="home-section">
-            <h1>Upcoming</h1>
+            <Link to = "/peliculasproximamente"> <h1>Próximamente</h1> </Link>
             <SeccionSeries peliculas={this.state.upcoming} />
           </section>
         </main>

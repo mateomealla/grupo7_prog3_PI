@@ -23,3 +23,11 @@ main {
   border-left: 4px solid #ff2a2a;
   padding-left: 12px;
 }
+.home-section a {
+  text-decoration: none;   /* quita el subrayado */
+  color: inherit;          /* usa el color del h1 */
+}
+
+.home-section a:hover h1 {
+  color: #ff2a2a;          /* efecto hover en el texto */
+}
