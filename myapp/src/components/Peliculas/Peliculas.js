@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import PelisCard from "../PelisCard/PelisCard.js";
+import SeriesCard from "../SeriesCard/SeriesCard.js";
+import "./Peliculas.css";
 
 class Peliculas extends Component {
   constructor() {
     super();
     this.state = {
       movies: [],
-      page: 1,
       filtro: "",
-      loading: true,
+      cargando: true,
       error: "",
       num: 1,
     };
@@ -23,13 +23,14 @@ class Peliculas extends Component {
       .then((data) => {
         this.setState({
           movies: data.results,
-          loading: false,
+          cargando: false,
+          num: this.state.num + 1,
         });
       })
       .catch((err) => {
         this.setState({
-          error: "Error al cargar personajes",
-          loading: false,
+          error: "Error al cargar peliculas",
+          cargando: false,
         });
       });
   }
@@ -40,7 +41,23 @@ class Peliculas extends Component {
     );
   }
 
-  cargarMas() {}
+  cargarMas() {
+    fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=8a83423231f73046d3a699212802bf6e&language=es-ES&page=${this.state.num}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          movies: this.state.movies.concat(data.results),
+          num: this.state.num + 1,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+
+  handleChange(event) {
+    this.setState({ filtro: event.target.value });
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -48,33 +65,27 @@ class Peliculas extends Component {
 
   render() {
     let pelisFiltradas = this.FiltrarPelis(this.state.filtro);
-
+    console.log(this.state.movies);
     return (
       <React.Fragment>
-        <section className="">
-          {this.state.loading && <p>Cargando…</p>}
+        <form className="formulario-home" onSubmit={(event) => this.handleSubmit(event)}>
+          <input
+            type="text"
+            value={this.state.filtro}
+            onChange={(event) => this.handleChange(event)}
+            placeholder="Filtra peliculas..."
+          />
+        </form>
+
+        <h1>Películas populares</h1>
+
+        <section className="seccion-series">
+          {this.state.cargando && <p>Cargando…</p>}
           {this.state.error && <p>{this.state.error}</p>}
 
-          <form onSubmit={(event) => event.preventDefault()}>
-            <input
-              type="text"
-              value={this.state.filtro}
-              onChange={(event) => this.handleChange(event)}
-              placeholder="Filtra personajes..."
-            />
-          </form>
-
-          <div className="">
-            {pelisFiltradas.map((item, i) => (
-              <PelisCard
-                image={item.poster_path}
-                name={item.title}
-                desc={item.overview}
-                id={item.id}
-                key={"hola" + i}
-              />
-            ))}
-          </div>
+          {pelisFiltradas.map((item, i) => (
+            <SeriesCard data={item} key={"hola" + i} />
+          ))}
         </section>
 
         <button onClick={() => this.cargarMas()}>Más peliculas</button>

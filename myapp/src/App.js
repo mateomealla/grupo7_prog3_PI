@@ -20,8 +20,8 @@ function App() {
       <Switch>
         <Route path="/home" exact={true} component={Home}/>
         <Route path="/favoritos" component={Favoritos}/>
-        <Route path="/peliculas" component={PelisScreen}/>
-        <Route path="/series" component={SeriesScreen}/>
+        <Route path="/peliculaspopulares" component={PelisScreen}/>
+        <Route path="/seriespopulares" component={SeriesScreen}/>
         <Route path="/resultados/:busqueda" component={Busqueda}/>
         <Route path="/detalle/id/:id" component={DetalleScreen}/>
         <Route component={NotFound}/>

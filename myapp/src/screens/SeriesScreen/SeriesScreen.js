@@ -3,10 +3,11 @@ import Series from "../../components/Series/Series.js";
 
 function SeriesScreen() {
   return (
-    <div>
-      <h1>Series populares</h1>
+    <main>
+    <section className="home-section">
       <Series />
-    </div>
+    </section>
+  </main>
   );
 }
 

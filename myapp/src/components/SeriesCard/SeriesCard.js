@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class SeriesCard extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       verMas: false,
       textoBoton: "Ver descripcion",
-      dataProducto: props.data,
+      // dataProducto: props.data,
     };
   }
 
@@ -19,23 +19,24 @@ class SeriesCard extends Component {
   }
 
   render() {
+    console.log(this.props.data);
     return (
       <React.Fragment>
         <article className="series-card">
           <div className="card-image">
             <img
-              src={"https://image.tmdb.org/t/p/w342" + this.state.dataProducto.poster_path}
-              alt={this.state.dataProducto.title}
+              src={"https://image.tmdb.org/t/p/w342" + this.props.data.poster_path}
+              alt={this.props.data.title ? this.props.data.title : this.props.data.name}
             />
           </div>
 
           <div className="card-body">
-            <h4 className="card-title">{this.state.dataProducto.title}</h4>
-            {console.log(this.state.dataProducto.title)}
+            <h4 className="card-title">{this.props.data.title ? this.props.data.title : this.props.data.name}</h4>
+           
 
             {this.state.verMas && (
               <p className="card-desc">
-                Descripción: {this.state.dataProducto.overview}
+                Descripción: {this.props.data.overview}
               </p>
             )}
 
@@ -46,7 +47,7 @@ class SeriesCard extends Component {
 
               <button className="btn-fav">Favorito</button>
             </div>
-            <Link to={`/detalle/id/${this.state.dataProducto.id}`} className="btn-play">
+            <Link to={`/detalle/id/${this.props.data.id}`} className="btn-play">
               Detalle
             </Link>
           </div>

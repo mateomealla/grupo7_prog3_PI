@@ -1,82 +1,97 @@
 import React, { Component } from "react";
 import SeriesCard from "../SeriesCard/SeriesCard.js";
-
+import "./Series.css";
 
 class Series extends Component {
   constructor() {
     super();
     this.state = {
       series: [],
-      page: 1,
       filtro: "",
-      loading: true,
+      cargando: true,
       error: "",
+      num: 1,
     };
   }
 
-componentDidMount() {
-    fetch("https://api.themoviedb.org/3/tv/popular?api_key=8a83423231f73046d3a699212802bf6e&language=en-US&page=1")
-      .then(res => res.json())
-      .then(data => {
+  componentDidMount() {
+    fetch(
+      "https://api.themoviedb.org/3/tv/popular?api_key=8a83423231f73046d3a699212802bf6e&language=es-ES&page=" +
+        this.state.num
+    )
+      .then((res) => res.json())
+      .then((data) => {
         this.setState({
           series: data.results,
-          loading: false,
+          cargando: false,
+          num: this.state.num + 1,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({
-          error: 'Error al cargar personajes',
-          loading: false
+          error: "Error al cargar personajes",
+          cargando: false,
         });
       });
   }
 
+  FiltrarSeries(seriesAFiltrar) {
+    return this.state.series.filter((i) =>
+      i.name.toLowerCase().includes(seriesAFiltrar.toLowerCase())
+    );
+  }
 
-FiltrarSeries(serieAFiltrar) {
-  return this.state.series.filter((i) =>
-    i.title.toLowerCase().includes(serieAFiltrar.toLowerCase())
-  );
-}
+  cargarMas() {
+    fetch(
+      "https://api.themoviedb.org/3/tv/popular?api_key=8a83423231f73046d3a699212802bf6e&language=es-ES&page=" +
+        this.state.num
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          series: this.state.series.concat(data.results),
+          num: this.state.num + 1,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
 
+  handleChange(event) {
+    this.setState({ filtro: event.target.value });
+  }
 
-cargarMas() {
-}
+  handleSubmit(event) {
+    event.preventDefault();
+  }
 
-handleSubmit(event) {
-  event.preventDefault(); 
-}
-
-render() {
+  render() {
     let seriesFiltradas = this.FiltrarSeries(this.state.filtro);
+    console.log(this.state.series);
+    return (
+      <React.Fragment>
+        <form className="formulario-home" onSubmit={(event) => this.handleSubmit(event)}>
+          <input
+            type="text"
+            value={this.state.filtro}
+            onChange={(event) => this.handleChange(event)}
+            placeholder="Filtra series..."
+          />
+        </form>
 
-  return (
-    <React.Fragment>
-    <section className="">
-        {this.state.loading && <p>Cargando…</p>}
-        {this.state.error && <p >{this.state.error}</p>}
-        <form onSubmit={(event) => event.preventDefault()}>
-            <input
-              type="text"
-              value={this.state.filtro}
-              onChange={(event) => this.handleChange(event)}
-              placeholder="Filtra personajes..."
-            />
-          </form>
-      <div className="">
-        {seriesFiltradas.map((item, i) => (
-          <SeriesCard image= {item.poster_path} name={item.title} desc={item.overview} id={item.id}  key={"hola" + i} />
-        ))}
-      </div>
-    </section>
+        <h1>Series populares</h1>
+        <section className="seccion-series">
+          {this.state.cargando && <p>Cargando…</p>}
+          {this.state.error && <p>{this.state.error}</p>}
 
-<button onClick={() => this.cargarMas()}>
-        Más series
-      </button>
-    </React.Fragment>
+          {seriesFiltradas.map((item, i) => (
+            <SeriesCard data={item} key={"hola" + i} />
+          ))}
+        </section>
 
-  );
-};
-
-};
+        <button onClick={() => this.cargarMas()}>Más series</button>
+      </React.Fragment>
+    );
+  }
+}
 
 export default Series;

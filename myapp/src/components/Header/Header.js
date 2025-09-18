@@ -16,7 +16,8 @@ function Header() {
                 {/* <li> <Link to = "/busqueda"> Personajes </Link></li> */}
                 {/* <li> <Link to = "/detalle"> Personajes </Link></li> */}
                 <li> <Link to = "/favoritos"> Favoritos </Link></li>
-                <li> <Link to = "/peliculasyseries"> Peliculas mas vistas </Link></li>
+                <li> <Link to = "/peliculaspopulares"> Peliculas populares </Link></li>
+                <li> <Link to = "/seriespopulares"> Series populares </Link></li>
             </ul>
             <ul className="user">
                 <li><img src="/img/perfil.webp" alt=""></img></li>
