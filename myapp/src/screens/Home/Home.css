@@ -1,0 +1,13 @@
+.home-section {
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.home-section h1 {
+  color: #fff;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  border-left: 4px solid #ff2a2a;
+  padding-left: 10px;
+}

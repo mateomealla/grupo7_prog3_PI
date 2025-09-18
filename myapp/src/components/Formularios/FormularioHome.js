@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
+import './FormularioHome.css'
 
 class MiFormulario extends Component {
     constructor(props){
@@ -24,7 +25,7 @@ class MiFormulario extends Component {
 
     render(){
         return(
-            <form onSubmit={(evento) => this.controlarForm(evento)} >
+            <form className="formulario-home" onSubmit={(evento) => this.controlarForm(evento)} >
                 <input onChange={(evento) => this.controlarInput(evento)}  />
                 <button>Buscar</button>
             </form>
