@@ -6,16 +6,15 @@ import Header from "./components/Header/Header";
 
 import Home from "./screens/Home/Home"
 import Busqueda from "./screens/Busqueda/Busqueda"
-import DetalleScreen from "./screens/Detalle/Detalle"
+import DetallePeli from "./screens/Detalle/DetallePeli"
 import Favoritos from "./screens/Favoritos/Favoritos"
 
-import PelisScreen from "./screens/PelisScreen/PelisScreen"
+
 import PelisPopulares from "./screens/PelisScreen/PelisPopulares"
 import PelisAhora from "./screens/PelisScreen/PelisAhora"
 import PelisMejorPt from "./screens/PelisScreen/Pelismejorpt"
 import PelisProx from "./screens/PelisScreen/PelisProximamente"
 
-import SeriesScreen from "./screens/SeriesScreen/SeriesScreen"
 import SeriesPopulares from "./screens/SeriesScreen/SeriesPopulares"
 import SeriesTopRated from "./screens/SeriesScreen/SeriesTopRated"
 import Seriesairing from "./screens/SeriesScreen/Seriesairing"
@@ -44,7 +43,7 @@ function App() {
         <Route path="/seriesontheair" component={Seriesontheair}/>
 
         <Route path="/resultados/:busqueda" component={Busqueda}/>
-        <Route path="/detalle/id/:id" component={DetalleScreen}/>
+        <Route path="/detalle/:peli/:id" component={DetallePeli}/>
         <Route component={NotFound}/>
       </Switch>
 

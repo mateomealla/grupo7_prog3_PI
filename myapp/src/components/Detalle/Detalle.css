@@ -1,0 +1,94 @@
+/* ======== Contenedor general ======== */
+.detalle {
+  display: flex;
+  flex-direction: column;
+  background: #0d0d0d;       /* fondo negro elegante */
+  color: #fff;
+  padding: 40px 60px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ======== Título ======== */
+.detalle-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  border-left: 5px solid #e50914; /* barra roja estilo Netflix */
+  padding-left: 12px;
+}
+
+/* ======== Layout: poster + info ======== */
+.detalle-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  flex-wrap: wrap; /* responsive: que baje el texto debajo si no entra */
+}
+
+/* ======== Poster ======== */
+.detalle-poster {
+  width: 300px;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.detalle-poster:hover {
+  transform: scale(1.05); /* leve zoom en hover */
+}
+
+/* ======== Info ======== */
+.detalle-info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.detalle-info p {
+  margin: 12px 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.detalle-info strong {
+  color: #e50914;
+  font-weight: 600;
+}
+
+/* ======== Loading & Error ======== */
+.detalle-loading,
+.detalle-error {
+  text-align: center;
+  margin: 40px 0;
+  font-size: 1.2rem;
+  color: #bbb;
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 768px) {
+  .detalle {
+    padding: 20px;
+  }
+
+  .detalle-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+
+  .detalle-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .detalle-poster {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .detalle-info p {
+    font-size: 1rem;
+  }
+}

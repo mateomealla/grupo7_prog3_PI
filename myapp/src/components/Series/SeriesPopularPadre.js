@@ -84,7 +84,7 @@ class SeriesPopularPadre extends Component {
           {this.state.error && <p>{this.state.error}</p>}
 
           {pelisFiltradas.map((item, i) => (
-            <SeriesCard data={item} key={"hola" + i} />
+            <SeriesCard data={item} key={"hola" + i} movie={false}  />
           ))}
         </section>
 

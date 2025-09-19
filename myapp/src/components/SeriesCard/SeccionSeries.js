@@ -8,11 +8,11 @@ function SeccionSeries(props) {
       {props.movie ? (
         props.peliculas
           .slice(0, 5)
-          .map((elm, i) => <SeriesCard key={elm.title + i} data={elm} />)
+          .map((elm, i) => <SeriesCard key={elm.title + i} data={elm} movie={true}  />)
       ) : (
         props.se
           .slice(0, 5)
-          .map((elm, i) => <SeriesCard key={elm.name + i} data={elm} />)
+          .map((elm, i) => <SeriesCard key={elm.name + i} data={elm} movie={false}  />)
       )}
     </section>
   );
