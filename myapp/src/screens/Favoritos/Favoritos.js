@@ -55,14 +55,15 @@ class Favoritos extends Component {
             this.setState({ error: "Error al cargar series favoritas" });
           });
       }
-      return null; 
+      return null;
     });
   }
 
   render() {
     return (
       <main>
-        <h1 className="detalle-title">Mis Favoritos</h1>
+    
+        <h1 className="detalle-screen-title">Mis Favoritos</h1>
 
         {this.state.cargando && <p>Cargando favoritos...</p>}
         {this.state.error && <p>{this.state.error}</p>}
@@ -75,7 +76,10 @@ class Favoritos extends Component {
 
         {this.state.pelisFav.length > 0 && (
           <>
-            <h2 className="detalle-title">Películas</h2>
+       
+            <div className="home-section">
+              <h1>Películas</h1>
+            </div>
             <section className="seccion-series">
               {this.state.pelisFav.map((pelicula) => (
                 <SeriesCard key={pelicula.id} data={pelicula} movie={true} />
@@ -86,7 +90,10 @@ class Favoritos extends Component {
 
         {this.state.seriesFav.length > 0 && (
           <>
-            <h2 className="detalle-title">Series</h2>
+          
+            <div className="home-section">
+              <h1>Series</h1>
+            </div>
             <section className="seccion-series">
               {this.state.seriesFav.map((serie) => (
                 <SeriesCard key={serie.id} data={serie} movie={false} />

@@ -184,11 +184,11 @@ class Detalle extends Component {
                 </p>
 
                 {this.state.esFav ? (
-                  <button onClick={() => this.eliminarFavorito()}>
+                  <button className="boton-fav" onClick={() => this.eliminarFavorito()}>
                     Eliminar de Favoritos
                   </button>
                 ) : (
-                  <button onClick={() => this.agregarFavorito()}>
+                  <button className="boton-fav" onClick={() => this.agregarFavorito()}>
                     Agregar a Favoritos
                   </button>
                 )}

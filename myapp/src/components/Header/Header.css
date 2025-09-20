@@ -27,8 +27,8 @@ header .nav-left {
 }
 header .nav-center { 
   display: flex; 
-  align-items: center;    /* <<--- fuerza centro vertical */
-  justify-content: center;/* <<--- centro horizontal */
+  align-items: center;    
+  justify-content: center;
   height: 100%;           
 }
 header .nav-right { 
@@ -62,11 +62,15 @@ header .main-nav span {
 header .main-nav a:hover,
 header .main-nav span:hover { color: #e50914; }
 
-/* Submenú */
+/* Submenú (fix hover) */
+header .has-submenu {
+  position: relative;
+}
+
 header .has-submenu .submenu {
   display: none;
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 0;
   background: #111;
   list-style: none;
@@ -75,7 +79,10 @@ header .has-submenu .submenu {
   margin: 0;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0,0,0,.5);
+  /* colchón invisible para evitar que se cierre al mover el mouse */
+  padding-top: 8px;
 }
+
 header .has-submenu .submenu li { padding: 6px 16px; }
 header .has-submenu .submenu a {
   display: block;
@@ -84,7 +91,12 @@ header .has-submenu .submenu a {
   font-size: .92rem;
 }
 header .has-submenu .submenu a:hover { color: #e50914; }
-header .has-submenu:hover .submenu { display: block; }
+
+/* Mostrar submenu cuando se pasa por el padre o por el submenu */
+header .has-submenu:hover > .submenu,
+header .has-submenu .submenu:hover {
+  display: block;
+}
 
 /* Usuario */
 header .user { 
@@ -101,8 +113,8 @@ header .formulario-home {
   display: flex;
   align-items: center;
   gap: 12px;
-  height: 40px;     /* más chico que el header */
-  margin: 0;        /* ❌ nunca margin-top */
+  height: 40px;     
+  margin: 0;        
 }
 
 header .formulario-input {
