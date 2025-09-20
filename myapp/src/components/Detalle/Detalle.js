@@ -9,41 +9,86 @@ class Detalle extends Component {
       cargando: true,
       error: "",
       series: null,
+      esFav: false,
     };
   }
 
   componentDidMount() {
     const movie_id = this.props.id;
 
-    this.props.movie
-      ? fetch(
-          `https://api.themoviedb.org/3/movie/${movie_id}?api_key=8a83423231f73046d3a699212802bf6e&language=es-ES`
+    if (this.props.movie) {
+      fetch(
+        `https://api.themoviedb.org/3/movie/${movie_id}?api_key=8a83423231f73046d3a699212802bf6e&language=es-ES`
+      )
+        .then((res) => res.json())
+        .then((movie) => {
+          this.setState({
+            pelicula: movie,
+            cargando: false,
+          });
+          this.verificarFavorito();
+        })
+        .catch((error) => console.log("Error Fetch", error));
+    } else {
+      fetch(
+        `https://api.themoviedb.org/3/tv/${movie_id}?api_key=8a83423231f73046d3a699212802bf6e&language=es-ES`
+      )
+        .then((res) => res.json())
+        .then((series) => {
+          this.setState({
+            series: series,
+            cargando: false,
+          });
+          this.verificarFavorito();
+        })
+        .catch((error) => console.log("Error Fetch", error));
+    }
+  }
+
+  verificarFavorito() {
+    let guardados = JSON.parse(localStorage.getItem("favoritos")) || [];
+    let encontrados = guardados.filter(
+      (fav) =>
+        fav.id === parseInt(this.props.id) &&
+        fav.tipo === (this.props.movie ? "peli" : "serie")
+    );
+    this.setState({ esFav: encontrados.length > 0 });
+  }
+
+  agregarFavorito() {
+    let guardados = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+    let nuevo = {
+      id: parseInt(this.props.id),
+      tipo: this.props.movie ? "peli" : "serie",
+    };
+
+    let repetidos = guardados.filter(
+      (fav) => fav.id === nuevo.id && fav.tipo === nuevo.tipo
+    );
+
+    if (repetidos.length === 0) {
+      guardados.push(nuevo);
+      localStorage.setItem("favoritos", JSON.stringify(guardados));
+      this.setState({ esFav: true });
+    }
+  }
+
+  eliminarFavorito() {
+    let guardados = JSON.parse(localStorage.getItem("favoritos")) || [];
+    let filtrados = guardados.filter(
+      (fav) =>
+        !(
+          fav.id === parseInt(this.props.id) &&
+          fav.tipo === (this.props.movie ? "peli" : "serie")
         )
-          .then((res) => res.json())
-          .then((movie) => {
-            this.setState({
-              pelicula: movie,
-              cargando: false,
-            });
-          })
-          .catch((error) => console.log("Error Fetch", error))
-      : fetch(
-          `https://api.themoviedb.org/3/tv/${movie_id}?api_key=8a83423231f73046d3a699212802bf6e&language=es-ES`
-        )
-          .then((res) => res.json())
-          .then((series) => {
-            this.setState({
-              series: series,
-              cargando: false,
-            });
-          })
-          .catch((error) => console.log("Error Fetch", error));
+    );
+
+    localStorage.setItem("favoritos", JSON.stringify(filtrados));
+    this.setState({ esFav: false });
   }
 
   render() {
-    console.log(this.state.pelicula);
-    console.log(this.state.series);
-
     return (
       <React.Fragment>
         {this.state.cargando && (
@@ -86,11 +131,26 @@ class Detalle extends Component {
                 <p>
                   <strong>Sinopsis:</strong> {this.state.pelicula.overview}
                 </p>
+
+                {this.state.esFav ? (
+                  <button
+                    className="boton-fav"
+                    onClick={() => this.eliminarFavorito()}
+                  >
+                    Eliminar de Favoritos
+                  </button>
+                ) : (
+                  <button
+                    className="boton-fav"
+                    onClick={() => this.agregarFavorito()}
+                  >
+                    Agregar a Favoritos
+                  </button>
+                )}
               </div>
             </div>
           </section>
         )}
-
 
         {!this.props.movie && this.state.series && (
           <section className="detalle detalle-serie">
@@ -122,6 +182,16 @@ class Detalle extends Component {
                 <p>
                   <strong>Sinopsis:</strong> {this.state.series.overview}
                 </p>
+
+                {this.state.esFav ? (
+                  <button onClick={() => this.eliminarFavorito()}>
+                    Eliminar de Favoritos
+                  </button>
+                ) : (
+                  <button onClick={() => this.agregarFavorito()}>
+                    Agregar a Favoritos
+                  </button>
+                )}
               </div>
             </div>
           </section>
