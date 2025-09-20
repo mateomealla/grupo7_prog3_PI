@@ -68,7 +68,10 @@ class PeliculasProximamentePadre extends Component {
     console.log(this.state.movies);
     return (
       <React.Fragment>
-        <form className="formulario-home" onSubmit={(event) => this.handleSubmit(event)}>
+        <form
+          className="formulario-home"
+          onSubmit={(event) => this.handleSubmit(event)}
+        >
           <input
             type="text"
             value={this.state.filtro}
@@ -84,15 +87,14 @@ class PeliculasProximamentePadre extends Component {
           {this.state.error && <p>{this.state.error}</p>}
 
           {pelisFiltradas.map((item, i) => (
-            <SeriesCard data={item} key={"hola" + i} movie={true}/>
+            <SeriesCard data={item} key={"hola" + i} movie={true} />
           ))}
         </section>
 
-        <button onClick={() => this.cargarMas()}>Más peliculas</button>
+        <button className="btn-mas-pelis" onClick={() => this.cargarMas()}>Más peliculas</button>
       </React.Fragment>
     );
   }
 }
 
 export default PeliculasProximamentePadre;
-

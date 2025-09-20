@@ -68,16 +68,19 @@ class SeriesAhoraPadre extends Component {
     console.log(this.state.movies);
     return (
       <React.Fragment>
-        <form className="formulario-home" onSubmit={(event) => this.handleSubmit(event)}>
+        <form
+          className="formulario-home"
+          onSubmit={(event) => this.handleSubmit(event)}
+        >
           <input
             type="text"
             value={this.state.filtro}
             onChange={(event) => this.handleChange(event)}
-            placeholder="Filtra peliculas..."
+            placeholder="Filtra series..."
           />
         </form>
 
-        <h1>Mejor Puntuación</h1>
+        <h1>Trasmitiendo Ahora</h1>
 
         <section className="seccion-series">
           {this.state.cargando && <p>Cargando…</p>}
@@ -88,7 +91,7 @@ class SeriesAhoraPadre extends Component {
           ))}
         </section>
 
-        <button onClick={() => this.cargarMas()}>Más peliculas</button>
+        <button className="btn-mas-pelis" onClick={() => this.cargarMas()}>Más series</button>
       </React.Fragment>
     );
   }

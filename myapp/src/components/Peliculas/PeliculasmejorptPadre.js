@@ -68,7 +68,10 @@ class PeliculasmejorptPadre extends Component {
     console.log(this.state.movies);
     return (
       <React.Fragment>
-        <form className="formulario-home" onSubmit={(event) => this.handleSubmit(event)}>
+        <form
+          className="formulario-home"
+          onSubmit={(event) => this.handleSubmit(event)}
+        >
           <input
             type="text"
             value={this.state.filtro}
@@ -88,11 +91,10 @@ class PeliculasmejorptPadre extends Component {
           ))}
         </section>
 
-        <button onClick={() => this.cargarMas()}>Más peliculas</button>
+        <button className="btn-mas-pelis" onClick={() => this.cargarMas()}>Más peliculas</button>
       </React.Fragment>
     );
   }
 }
 
 export default PeliculasmejorptPadre;
-

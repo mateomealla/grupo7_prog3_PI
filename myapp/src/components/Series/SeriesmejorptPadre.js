@@ -68,31 +68,33 @@ class SeriesmejorptPadre extends Component {
     console.log(this.state.movies);
     return (
       <React.Fragment>
-        <form className="formulario-home" onSubmit={(event) => this.handleSubmit(event)}>
+        <form
+          className="formulario-home"
+          onSubmit={(event) => this.handleSubmit(event)}
+        >
           <input
             type="text"
             value={this.state.filtro}
             onChange={(event) => this.handleChange(event)}
-            placeholder="Filtra peliculas..."
+            placeholder="Filtra series..."
           />
         </form>
 
-        <h1>Mejor Puntuación</h1>
+        <h1>Series Preferidas</h1>
 
         <section className="seccion-series">
           {this.state.cargando && <p>Cargando…</p>}
           {this.state.error && <p>{this.state.error}</p>}
 
           {pelisFiltradas.map((item, i) => (
-            <SeriesCard data={item} key={"hola" + i} movie={false}  />
+            <SeriesCard data={item} key={"hola" + i} movie={false} />
           ))}
         </section>
 
-        <button onClick={() => this.cargarMas()}>Más peliculas</button>
+        <button className="btn-mas-pelis" onClick={() => this.cargarMas()}>Más series</button>
       </React.Fragment>
     );
   }
 }
 
 export default SeriesmejorptPadre;
-
