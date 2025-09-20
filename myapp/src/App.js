@@ -42,7 +42,7 @@ function App() {
         <Route path="/seriesairing" component={Seriesairing}/>
         <Route path="/seriesontheair" component={Seriesontheair}/>
 
-        <Route path="/resultados/:busqueda" component={Busqueda}/>
+        <Route path="/resultados/:category/:query" component={Busqueda}/>
         <Route path="/detalle/:peli/:id" component={DetallePeli}/>
         <Route component={NotFound}/>
       </Switch>
