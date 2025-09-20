@@ -47,6 +47,40 @@ class SearchResults extends Component {
       .catch((err) => console.log(err));
   }
 
+componentDidUpdate(prevProps) {
+  if (
+    prevProps.match.params.category !== this.props.match.params.category ||
+    prevProps.match.params.query !== this.props.match.params.query
+  ) {
+    this.setState({
+      results: [],
+      cargando: true,
+      error: "",
+      categoria: this.props.match.params.category,
+      query: this.props.match.params.query,
+      num: 1,
+    });
+
+    fetch(
+      `https://api.themoviedb.org/3/search/${this.state.categoria}?api_key=8a83423231f73046d3a699212802bf6e&language=es-ES&query=${this.state.query}&page=${this.state.num}&include_adult=false`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          results: data.results ? data.results : [],
+          cargando: false,
+          num: 2,
+        });
+      })
+      .catch(() =>
+        this.setState({
+          error: "Error al buscar resultados",
+          cargando: false,
+        })
+      );
+  }
+}
+
   render() {
     let categoria = this.props.match.params.category;
 
@@ -64,7 +98,7 @@ class SearchResults extends Component {
               <SeriesCard
                 data={item}
                 movie={categoria === "movie"}
-                key={"res-" + i}
+                key={"hola" + i}
               />
             ))}
           </section>

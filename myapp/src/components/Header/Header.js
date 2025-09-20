@@ -16,7 +16,7 @@ function Header() {
           </ul>
 
           <ul className="main-nav">
-            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/favoritos">Favoritos</Link></li>
 
             <li className="has-submenu">

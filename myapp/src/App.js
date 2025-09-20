@@ -22,14 +22,12 @@ import Seriesontheair from "./screens/SeriesScreen/Seriesontheair"
 
 import NotFound from "./screens/NotFound/NotFound"
 
-// import Loader from "./screens/Loader/Loader"
-
 function App() {
   return (
     <React.Fragment>
       <Header/>
       <Switch>
-        <Route path="/home" exact={true} component={Home}/>
+        <Route path="/" exact={true} component={Home}/>
         <Route path="/favoritos" component={Favoritos}/>
 
         <Route path="/peliculaspopulares" component={PelisPopulares}/>
