@@ -1,16 +1,11 @@
-/* HOME */
 main {
-  background-color: #0d0d0d;  /* fondo oscuro */
+  background-color: #0d0d0d;
   min-height: 100vh;
   padding: 40px 0;
   color: #fff;
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
-
-.home-section {
-  margin-bottom: 60px;
-}
-
+.home-section { margin-bottom: 60px; }
 .home-section h1 {
   color: #fff;
   font-size: 1.8rem;
@@ -23,15 +18,9 @@ main {
   border-left: 4px solid #ff2a2a;
   padding-left: 12px;
 }
-.home-section a {
-  text-decoration: none;   /* quita el subrayado */
-  color: inherit;          /* usa el color del h1 */
-}
+.home-section a { text-decoration: none; color: inherit; }
+.home-section a:hover h1 { color: #ff2a2a; }
 
-.home-section a:hover h1 {
-  color: #ff2a2a;          /* efecto hover en el texto */
-}
-/* Título principal de la screen */
 .detalle-screen-title {
   font-size: 2.6rem;
   font-weight: 700;
@@ -41,17 +30,16 @@ main {
   letter-spacing: 1px;
   position: relative;
 }
-
-/* Línea roja animada debajo */
 .detalle-screen-title::after {
   content: "";
   display: block;
   width: 160px;
   height: 4px;
   background-color: #e50914;
-  margin: 12px auto 0; /* centrado debajo del título */
+  margin: 12px auto 0;
   border-radius: 2px;
 }
+
 .btn-mas-pelis {
   display: block;
   margin: 30px auto;
@@ -67,15 +55,34 @@ main {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.btn-mas-pelis:hover { background-color: #e50914; color: #fff; transform: scale(1.05); box-shadow: 0 4px 12px rgba(229,9,20,.6); }
+.btn-mas-pelis:active { transform: scale(0.95); box-shadow: 0 2px 6px rgba(229,9,20,.8); }
 
-.btn-mas-pelis:hover {
-  background-color: #e50914;
-  color: #fff;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.6);
+/* iPad ≤1024px */
+@media screen and (max-width: 1024px) {
+  main { padding: 30px 0; }
+  .home-section { margin-bottom: 50px; }
+  .home-section h1 { font-size: 1.6rem; }
+  .detalle-screen-title { font-size: 2.2rem; margin: 25px 0 40px; }
+  .detalle-screen-title::after { width: 130px; }
 }
 
-.btn-mas-pelis:active {
-  transform: scale(0.95);
-  box-shadow: 0 2px 6px rgba(229, 9, 20, 0.8);
+/* Celular ≤768px */
+@media screen and (max-width: 768px) {
+  main { padding: 24px 12px 80px !important; }
+  .home-section { margin-bottom: 40px; }
+  .home-section h1 { font-size: 1.4rem; padding: 0 8px; border-left: 3px solid #ff2a2a; padding-left: 10px; }
+  .detalle-screen-title { font-size: 1.9rem; margin: 20px 0 30px; }
+  .detalle-screen-title::after { width: 100px; }
+  .btn-mas-pelis { padding: 10px 20px; font-size: 15px; }
+}
+
+/* XS ≤480px */
+@media screen and (max-width: 480px) {
+  main { padding: 20px 8px 80px !important; }
+  .home-section { margin-bottom: 30px; }
+  .home-section h1 { font-size: 1.2rem; border-left: 3px solid #ff2a2a; padding-left: 8px; }
+  .detalle-screen-title { font-size: 1.6rem; margin: 18px 0 25px; }
+  .detalle-screen-title::after { width: 80px; height: 3px; }
+  .btn-mas-pelis { width: 90%; font-size: 14px; padding: 10px; margin: 20px auto; }
 }

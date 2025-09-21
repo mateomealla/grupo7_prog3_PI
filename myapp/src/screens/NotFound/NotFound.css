@@ -4,19 +4,32 @@
   justify-content: center;
   align-items: center;
   min-height: 55vh;
-  background-color: #0d0d0d; 
+  background-color: #0d0d0d;
   color: #fff;
   text-align: center;
   padding: 20px;
 }
-
 .notfound h2 {
   font-size: 2rem;
   color: #e50914;
   margin-bottom: 10px;
 }
-
 .notfound p {
   font-size: 1.2rem;
   color: #ccc;
+}
+
+@media (max-width: 1024px) {
+  .notfound h2 { font-size: 1.8rem; }
+  .notfound p { font-size: 1.1rem; }
+}
+@media (max-width: 768px) {
+  .notfound { padding: 16px; min-height: 50vh; }
+  .notfound h2 { font-size: 1.6rem; }
+  .notfound p { font-size: 1rem; }
+}
+@media (max-width: 480px) {
+  .notfound { padding: 12px; min-height: 45vh; }
+  .notfound h2 { font-size: 1.4rem; }
+  .notfound p { font-size: 0.95rem; }
 }
