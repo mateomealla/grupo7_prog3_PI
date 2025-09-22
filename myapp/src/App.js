@@ -28,20 +28,20 @@ function App() {
       <Header/>
       <Switch>
         <Route path="/" exact={true} component={Home}/>
-        <Route path="/favoritos" component={Favoritos}/>
+        <Route path="/favoritos" exact={true} component={Favoritos}/>
 
-        <Route path="/peliculaspopulares" component={PelisPopulares}/>
-        <Route path="/peliculasviendoahora" component={PelisAhora}/>
-        <Route path="/peliculasmejorpuntuacion" component={PelisMejorPt}/>
-        <Route path="/peliculasproximamente" component={PelisProx}/>
+        <Route path="/peliculaspopulares" exact={true} component={PelisPopulares}/>
+        <Route path="/peliculasviendoahora" exact={true} component={PelisAhora}/>
+        <Route path="/peliculasmejorpuntuacion" exact={true} component={PelisMejorPt}/>
+        <Route path="/peliculasproximamente" exact={true} component={PelisProx}/>
 
-        <Route path="/seriespopulares" component={SeriesPopulares}/>
-        <Route path="/seriestoprated" component={SeriesTopRated}/>
-        <Route path="/seriesairing" component={Seriesairing}/>
-        <Route path="/seriesontheair" component={Seriesontheair}/>
+        <Route path="/seriespopulares" exact={true} component={SeriesPopulares}/>
+        <Route path="/seriestoprated" exact={true} component={SeriesTopRated}/>
+        <Route path="/seriesairing" exact={true} component={Seriesairing}/>
+        <Route path="/seriesontheair" exact={true} component={Seriesontheair}/>
 
-        <Route path="/resultados/:category/:query" component={Busqueda}/>
-        <Route path="/detalle/:peli/:id" component={DetallePeli}/>
+        <Route path="/resultados/:category/:query" exact={true} component={Busqueda}/>
+        <Route path="/detalle/:peli/:id" exact={true} component={DetallePeli}/>
         <Route component={NotFound}/>
       </Switch>
 

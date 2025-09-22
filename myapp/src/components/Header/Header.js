@@ -12,7 +12,9 @@ function Header() {
         <div className="nav-left">
           <ul className="Logo">
             <li>
-              <img src="/img/netflix.png" alt="logo" />
+              <Link to="/">
+                <img src="/img/netflix.png" alt="logo" />
+              </Link>
             </li>
           </ul>
 
@@ -84,7 +86,6 @@ function Header() {
           <span></span>
           <span></span>
         </label>
-
 
         <ul className="main-nav">
           <li>

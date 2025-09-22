@@ -66,7 +66,6 @@ class PeliculasAhoraPadre extends Component {
 
   render() {
     let pelisFiltradas = this.FiltrarPelis(this.state.filtro);
-    console.log(this.state.movies);
     return (
       <React.Fragment>
         <form
