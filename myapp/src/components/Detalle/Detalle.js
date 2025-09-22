@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Detalle.css";
+import Cargando from "../Cargando/Cargando.js";
 
 class Detalle extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class Detalle extends Component {
     let guardados = JSON.parse(localStorage.getItem("favoritos")) || [];
     let encontrados = guardados.filter(
       (fav) =>
-        fav.id === parseInt(this.props.id) &&
+        fav.id === (this.props.id) &&
         fav.tipo === (this.props.movie ? "peli" : "serie")
     );
     this.setState({ esFav: encontrados.length > 0 });
@@ -59,7 +60,7 @@ class Detalle extends Component {
     let guardados = JSON.parse(localStorage.getItem("favoritos")) || [];
 
     let nuevo = {
-      id: parseInt(this.props.id),
+      id: (this.props.id),
       tipo: this.props.movie ? "peli" : "serie",
     };
 
@@ -91,8 +92,7 @@ class Detalle extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.cargando && (
-          <p className="detalle-loading">Cargando detalle...</p>
+        {this.state.cargando && (<Cargando />          
         )}
         {this.state.error && (
           <p className="detalle-error">{this.state.error}</p>

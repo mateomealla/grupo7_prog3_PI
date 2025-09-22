@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SeriesCard from "../SeriesCard/SeriesCard.js";
 import "./Series.css";
+import Cargando from "../Cargando/Cargando.js";
 
 class SeriesmejorptPadre extends Component {
   constructor() {
@@ -83,7 +84,7 @@ class SeriesmejorptPadre extends Component {
         <h1>Series Preferidas</h1>
 
         <section className="seccion-series">
-          {this.state.cargando && <p>Cargando…</p>}
+          {this.state.cargando && <Cargando />}
           {this.state.error && <p>{this.state.error}</p>}
 
           {pelisFiltradas.map((item, i) => (

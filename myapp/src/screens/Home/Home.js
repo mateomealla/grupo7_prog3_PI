@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SeccionSeries from "../../components/SeriesCard/SeccionSeries";
 import { Link } from "react-router-dom";
+import Cargando from "../../components/Cargando/Cargando";
 
 class Home extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Home extends Component {
       sAiring: [],
       stopRated: [],
       sontheair: [],
+      cargando: true,
     };
   }
 
@@ -27,6 +29,7 @@ class Home extends Component {
       .then((populares) =>
         this.setState({
           populares: populares.results.filter((_, index) => index < 5),
+          cargando: false,
         })
       )
       .catch((error) => console.log("Error Fetch", error));
@@ -39,6 +42,7 @@ class Home extends Component {
       .then((topRated) =>
         this.setState({
           topRated: topRated.results.filter((_, index) => index < 5),
+          cargando: false,
         })
       )
       .catch((error) => console.log("Error Fetch", error));
@@ -51,6 +55,7 @@ class Home extends Component {
       .then((upcoming) =>
         this.setState({
           upcoming: upcoming.results.filter((_, index) => index < 5),
+          cargando: false,
         })
       )
       .catch((error) => console.log("Error Fetch", error));
@@ -63,6 +68,7 @@ class Home extends Component {
       .then((nowPlaying) =>
         this.setState({
           nowPlaying: nowPlaying.results.filter((_, index) => index < 5),
+          cargando: false,
         })
       )
       .catch((error) => console.log("Error Fetch", error));
@@ -75,6 +81,7 @@ class Home extends Component {
       .then((spopulares) =>
         this.setState({
           spopulares: spopulares.results.filter((_, index) => index < 5),
+          cargando: false,
         })
       )
       .catch((error) => console.log("Error Fetch", error));
@@ -87,6 +94,7 @@ class Home extends Component {
       .then((sAiring) =>
         this.setState({
           sAiring: sAiring.results.filter((_, index) => index < 5),
+          cargando: false,
         })
       )
       .catch((error) => console.log("Error Fetch", error));
@@ -99,6 +107,7 @@ class Home extends Component {
       .then((stopRated) =>
         this.setState({
           stopRated: stopRated.results.filter((_, index) => index < 5),
+          cargando: false,
         })
       )
       .catch((error) => console.log("Error Fetch", error));
@@ -111,6 +120,7 @@ class Home extends Component {
       .then((sontheair) =>
         this.setState({
           sontheair: sontheair.results.filter((_, index) => index < 5),
+          cargando: false,
         })
       )
       .catch((error) => console.log("Error Fetch", error));
@@ -122,6 +132,7 @@ class Home extends Component {
         <main>
 
           <section className="home-section">
+            {this.state.cargando && <Cargando />}
             <Link to="/peliculaspopulares">
               <h1>Peliculas Populares</h1>
             </Link>

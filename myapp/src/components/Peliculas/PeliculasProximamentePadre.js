@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SeriesCard from "../SeriesCard/SeriesCard.js";
 import "./Peliculas.css";
+import Cargando from "../Cargando/Cargando.js";
 
 class PeliculasProximamentePadre extends Component {
   constructor() {
@@ -83,7 +84,7 @@ class PeliculasProximamentePadre extends Component {
         <h1>Próximamente</h1>
 
         <section className="seccion-series">
-          {this.state.cargando && <p>Cargando…</p>}
+          {this.state.cargando && <Cargando />}
           {this.state.error && <p>{this.state.error}</p>}
 
           {pelisFiltradas.map((item, i) => (

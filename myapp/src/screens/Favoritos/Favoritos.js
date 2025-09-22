@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SeriesCard from "../../components/SeriesCard/SeriesCard";
+import Cargando from "../../components/Cargando/Cargando.js";
 
 class Favoritos extends Component {
   constructor() {
@@ -65,7 +66,7 @@ class Favoritos extends Component {
     
         <h1 className="detalle-screen-title">Mis Favoritos</h1>
 
-        {this.state.cargando && <p>Cargando favoritos...</p>}
+        {this.state.cargando && <Cargando />}
         {this.state.error && <p>{this.state.error}</p>}
 
         {!this.state.cargando &&
