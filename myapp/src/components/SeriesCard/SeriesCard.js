@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class SeriesCard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       verMas: false,
       textoBoton: "Ver descripcion",
@@ -15,7 +15,7 @@ class SeriesCard extends Component {
     let guardados = JSON.parse(localStorage.getItem("favoritos")) || [];
     let encontrados = guardados.filter(
       (fav) =>
-        fav.id === this.props.data.id &&
+        Number(fav.id) === Number(this.props.data.id)  &&
         fav.tipo === (this.props.movie ? "peli" : "serie")
     );
     this.setState({ esFav: encontrados.length > 0 });
@@ -51,7 +51,7 @@ class SeriesCard extends Component {
     let filtrados = guardados.filter(
       (fav) =>
         !(
-          fav.id === this.props.data.id &&
+           Number(fav.id) === Number(this.props.data.id) &&
           fav.tipo === (this.props.movie ? "peli" : "serie")
         )
     );

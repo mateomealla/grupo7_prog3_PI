@@ -17,7 +17,7 @@ class Favoritos extends Component {
     let guardados = JSON.parse(localStorage.getItem("favoritos")) || [];
 
     if (guardados.length === 0) {
-      this.setState({ cargando: false });
+      this.setState({ pelisFav: [], seriesFav: [], cargando: false });
       return;
     }
 
@@ -83,7 +83,7 @@ class Favoritos extends Component {
             </div>
             <section className="seccion-series">
               {this.state.pelisFav.map((pelicula) => (
-                <SeriesCard key={pelicula.id} data={pelicula} movie={true} />
+                <SeriesCard key={pelicula.id} data={pelicula} movie={true} esFav={true} />
               ))}
             </section>
           </>
@@ -92,7 +92,7 @@ class Favoritos extends Component {
         {this.state.seriesFav.length > 0 && (
           <>
           
-            <div className="home-section">
+            <div className="home-section">  
               <h1>Series</h1>
             </div>
             <section className="seccion-series">
