@@ -58,6 +58,13 @@ class SeriesCard extends Component {
 
     localStorage.setItem("favoritos", JSON.stringify(filtrados));
     this.setState({ esFav: false });
+
+    if (this.props.onRemove) {
+      this.props.onRemove(
+        this.props.data.id,
+        this.props.movie ? "peli" : "serie"
+      );
+    }
   }
 
   render() {

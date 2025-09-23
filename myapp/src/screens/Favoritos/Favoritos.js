@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import SeriesCard from "../../components/SeriesCard/SeriesCard";
-import Cargando from "../../components/Cargando/Cargando.js";
 
 class Favoritos extends Component {
   constructor() {
@@ -17,7 +16,7 @@ class Favoritos extends Component {
     let guardados = JSON.parse(localStorage.getItem("favoritos")) || [];
 
     if (guardados.length === 0) {
-      this.setState({ pelisFav: [], seriesFav: [], cargando: false });
+      this.setState({ cargando: false });
       return;
     }
 
@@ -60,13 +59,22 @@ class Favoritos extends Component {
     });
   }
 
+  eliminarDeFavoritos(id, tipo) {
+    if (tipo === "peli") {
+      let nuevasPelis = this.state.pelisFav.filter((p) => p.id !== id);
+      this.setState({ pelisFav: nuevasPelis });
+    } else {
+      let nuevasSeries = this.state.seriesFav.filter((s) => s.id !== id);
+      this.setState({ seriesFav: nuevasSeries });
+    }
+  }
+
   render() {
     return (
       <main>
-    
         <h1 className="detalle-screen-title">Mis Favoritos</h1>
 
-        {this.state.cargando && <Cargando />}
+        {this.state.cargando && <p>Cargando favoritos...</p>}
         {this.state.error && <p>{this.state.error}</p>}
 
         {!this.state.cargando &&
@@ -77,13 +85,17 @@ class Favoritos extends Component {
 
         {this.state.pelisFav.length > 0 && (
           <>
-       
             <div className="home-section">
               <h1>Películas</h1>
             </div>
             <section className="seccion-series">
               {this.state.pelisFav.map((pelicula) => (
-                <SeriesCard key={pelicula.id} data={pelicula} movie={true} esFav={true} />
+                <SeriesCard
+                  key={pelicula.id}
+                  data={pelicula}
+                  movie={true}
+                  onRemove={(id, tipo) => this.eliminarDeFavoritos(id, tipo)}
+                />
               ))}
             </section>
           </>
@@ -91,13 +103,17 @@ class Favoritos extends Component {
 
         {this.state.seriesFav.length > 0 && (
           <>
-          
-            <div className="home-section">  
+            <div className="home-section">
               <h1>Series</h1>
             </div>
             <section className="seccion-series">
               {this.state.seriesFav.map((serie) => (
-                <SeriesCard key={serie.id} data={serie} movie={false} />
+                <SeriesCard
+                  key={serie.id}
+                  data={serie}
+                  movie={false}
+                  onRemove={(id, tipo) => this.eliminarDeFavoritos(id, tipo)}
+                />
               ))}
             </section>
           </>
