@@ -1,5 +1,6 @@
 import React from "react";
 import Detalle from "../../components/Detalle/Detalle";
+import "../css/general.css"
 
 function DetallePeli(props) {
   const id = props.match.params.id;

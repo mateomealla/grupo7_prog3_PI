@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SeccionSeries from "../../components/SeriesCard/SeccionSeries";
 import { Link } from "react-router-dom";
 import Cargando from "../../components/Cargando/Cargando";
+import "../css/general.css"
 
 class Home extends Component {
   constructor(props) {

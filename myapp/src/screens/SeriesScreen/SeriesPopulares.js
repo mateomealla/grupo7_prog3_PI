@@ -1,5 +1,6 @@
 import React from "react";
 import SeriesPopularPadre from "../../components/Series/SeriesPopularPadre";
+import "../css/general.css"
 
 function SeriesPopulares() {
   return (

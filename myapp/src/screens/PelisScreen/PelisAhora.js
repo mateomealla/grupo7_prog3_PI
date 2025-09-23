@@ -1,5 +1,6 @@
 import React from "react";
 import PeliculasAhoraPadre from "../../components/Peliculas/PeliculasAhoraPadre";
+import "../css/general.css"
 
 function PelisAhora() {
   return (

@@ -1,5 +1,6 @@
 import React from "react";
 import PeliculasmejorptPadre from "../../components/Peliculas/PeliculasmejorptPadre";
+import "../css/general.css"
 
 function PelisMejorPt() {
   return (

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SeriesCard from "../../components/SeriesCard/SeriesCard";
+import "../css/general.css"
 
 class SearchResults extends Component {
   constructor(props) {

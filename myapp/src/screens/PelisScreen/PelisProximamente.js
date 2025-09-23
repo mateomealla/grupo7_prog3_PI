@@ -1,5 +1,6 @@
 import React from "react";
 import PeliculasProximamentePadre from "../../components/Peliculas/PeliculasProximamentePadre";
+import "../css/general.css"
 
 function PelisProx() {
   return (
