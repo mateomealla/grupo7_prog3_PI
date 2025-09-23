@@ -102,7 +102,7 @@ header .burger span {
   }
 }
 
-/* MOBILE/TABLET */
+
 @media (max-width: 768px) {
   header .nav-center,
   header .nav-right .user {
@@ -144,10 +144,10 @@ header .burger span {
     margin-top: 90px;
   }
 
-  /* FormularioBusqueda vertical */
+
   .side-menu .search-box {
     width: 100%;
-    margin-bottom: 20px; /* separa buscador del menú */
+    margin-bottom: 20px; 
   }
   .side-menu .search-box form {
     display: flex;
@@ -219,7 +219,7 @@ header .burger span {
     color: #e50914;
   }
 
-  /* Submenús en sidebar con checkbox */
+
   .side-menu .has-submenu {
     position: relative;
   }
@@ -255,7 +255,7 @@ header .burger span {
   }
 }
 
-/* DESKTOP */
+
 @media (min-width: 769px) {
   .side-menu {
     display: none;
@@ -266,7 +266,7 @@ header .burger span {
     display: flex;
   }
 
-  /* Hover en desktop */
+
   header .has-submenu .submenu {
     display: none;
     position: absolute;
