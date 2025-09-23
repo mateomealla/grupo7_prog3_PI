@@ -11,11 +11,13 @@ class Detalle extends Component {
       error: "",
       series: null,
       esFav: false,
+      nuevo: null,
     };
   }
 
   componentDidMount() {
     const movie_id = this.props.id;
+    this.setState({ nuevo: this.props.id });
 
     if (this.props.movie) {
       fetch(
@@ -50,7 +52,7 @@ class Detalle extends Component {
     let guardados = JSON.parse(localStorage.getItem("favoritos")) || [];
     let encontrados = guardados.filter(
       (fav) =>
-        fav.id === (this.props.id) &&
+        Number(fav.id) === Number((this.props.id)) &&
         fav.tipo === (this.props.movie ? "peli" : "serie")
     );
     this.setState({ esFav: encontrados.length > 0 });
@@ -80,7 +82,7 @@ class Detalle extends Component {
     let filtrados = guardados.filter(
       (fav) =>
         !(
-          fav.id === parseInt(this.props.id) &&
+          Number(fav.id) === Number(this.props.id) &&
           fav.tipo === (this.props.movie ? "peli" : "serie")
         )
     );
@@ -90,6 +92,7 @@ class Detalle extends Component {
   }
 
   render() {
+    console.log(this.state.nuevo);
     return (
       <React.Fragment>
         {this.state.cargando && (<Cargando />          
